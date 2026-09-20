@@ -57,15 +57,6 @@ const SocialIcons = () => {
   return (
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
-        {/* <span>
-          <a
-            href="https://github.com/ Abdul Manan"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub />
-          </a>
-        </span> */}
         <span>
           <a
             href="https://www.linkedin.com/in/abdul-manan-9982903a1"
@@ -75,15 +66,6 @@ const SocialIcons = () => {
             <FaLinkedinIn />
           </a>
         </span>
-        {/* <span>
-          <a
-            href="https://www.youtube.com/@Leftbraincoder"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaYoutube />
-          </a>
-        </span> */}
         <span>
           <a
             href="https://www.instagram.com/manan.vrs?stkn=eXdlMGpudTZ6eHd4&utm_source=qr"
@@ -96,7 +78,7 @@ const SocialIcons = () => {
       </div>
       <a
         className="resume-button"
-        href="/Abdul Manan_.pdf"
+        href="/Abdul%20Manan_.pdf"
         target="_blank"
         rel="noreferrer"
       >
