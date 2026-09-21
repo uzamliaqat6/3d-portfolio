@@ -21,11 +21,11 @@ const Contact = () => {
             </p>
             <h4>Education</h4>
             <p>
-              PGPWE (MBA), Indian Institute of Management, Lucknow — 2021–2023
+              
+              ICS (Intermediate in Computer Science) — Ongoing
             </p>
             <p>
-              B.Tech Computer Science, Manav Rachna Educational Institutions —
-              2009–2013
+              Matriculation, Global School System — 2025
             </p>
           </div>
           <div className="contact-box">
