@@ -32,6 +32,7 @@
   line-height: 42px;
   letter-spacing: 0.5px;
   margin-bottom: 24px;
+  text-wrap: balance; /* Keeps text visually balanced and prevents single-word line breaks */
 }
 
 @media only screen and (min-width: 600px) {
