@@ -103,7 +103,7 @@ body {
   flex-wrap: nowrap;
 }
 
-.techstack {
+.MyToolKit {
   width: 100%;
   position: relative;
   overflow: clip;
@@ -113,7 +113,7 @@ body {
   margin-bottom: -100px;
 }
 
-.techstack h2 {
+.MyToolKit h2 {
   font-size: 80px;
   text-align: center;
   position: absolute;
@@ -131,7 +131,7 @@ body {
 }
 
 @media screen and (max-width: 900px) {
-  .techstack h2 {
+  .MyToolKit h2 {
     font-size: 40px;
   }
 }

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
+import "./styles/MyToolKit.css";
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 import {
   BallCollider,
@@ -124,16 +125,17 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
   );
 }
 
-const TechStack = () => {
+const MyToolKit = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
+      const workElem = document.getElementById("work");
+      if (workElem) {
+        const threshold = workElem.getBoundingClientRect().top;
+        setIsActive(scrollY > threshold);
+      }
     };
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
@@ -151,6 +153,7 @@ const TechStack = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const materials = useMemo(() => {
     return textures.map(
       (texture) =>
@@ -167,8 +170,8 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
+    <div className="MyToolKit">
+      <h2>MY TOOLKIT</h2>
 
       <Canvas
         shadows
@@ -211,4 +214,4 @@ const TechStack = () => {
   );
 };
 
-export default TechStack;
+export default MyToolKit;

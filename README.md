@@ -67,7 +67,7 @@ Live site: [https:// Abdul Manan.netlify.app/](https:// Abdul Manan.netlify.app/
 │   │   ├── Landing.tsx
 │   │   ├── MainContainer.tsx  # Main page composition
 │   │   ├── Navbar.tsx
-│   │   ├── TechStack.tsx
+│   │   ├── MyToolKit.tsx
 │   │   ├── WhatIDo.tsx
 │   │   └── Work.tsx
 │   ├── context/               # Global providers (loading state, etc.)
