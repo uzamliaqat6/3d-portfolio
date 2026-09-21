@@ -171,7 +171,9 @@ const MyToolKit = () => {
 
   return (
     <div className="MyToolKit">
-      <h2>MY TOOLKIT</h2>
+      <h2>
+        MY <span>TOOLKIT</span>
+      </h2>
 
       <Canvas
         shadows
