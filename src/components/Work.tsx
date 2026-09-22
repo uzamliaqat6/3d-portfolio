@@ -1,38 +1,81 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
-import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { MdArrowBack, MdArrowForward, MdPlayArrow } from "react-icons/md";
 
 const projects = [
   {
-    title: "CallHQ",
-    category: "Voice AI Calling Platform",
-    tools: "Voice AI, Calling Automation, CRM Integrations",
-    image: "/images/callhq.png",
-    link: "https://callhq.ai",
+    title: "Effectudio",
+    category: "Video Editing & Motion Graphics",
+    tools: "Motion Graphics, Visual Effects, Transitions, Color Grading",
+    video: "/EFFECTUDIO TEST.mp4",
   },
   {
-    title: "Whatsapp Automation",
-    category: "WABA Application",
-    tools: "WhatsApp Business API, Workflow Automation, Notifications",
-    image: "/images/whatsapp.png",
-    link: "https://whatsapp.callhq.ai",
+    title: "Restaurant Commercial",
+    category: "AI-Generated Advertisement",
+    tools: "AI Generation, Cinematic Visuals, Product Showcasing",
+    video: "/resturant ad.mp4",
   },
   {
-    title: "Broki",
-    category: "Real Estate Platform for FnB Industry",
-    tools: "Property Discovery, Lead Management, Marketplace Workflows",
-    image: "/images/broki.png",
-    link: "https://broki.in",
+    title: "Juice Land TV Ad",
+    category: "AI-Generated TV Commercial",
+    tools: "Product Visualization, Cinematic Scenes, Sound Design",
+    video: "/juice land ad .mp4",
   },
   {
-    title: "Orrdr.com",
-    category: "Ecommerce Platform and Mobile App",
-    tools: "Ecommerce, Mobile Experience, Order Management",
-    image: "/images/orrdr.png",
-    link: "https://orrdr.com",
+    title: "Explainer Video",
+    category: "Motion Graphics & Animated Explainer",
+    tools: "Motion Graphics, 2D Animation, Visual Storytelling",
+    video: "/explainer video.mp4",
   },
 ];
+
+interface WorkVideoProps {
+  videoSrc: string;
+  title: string;
+}
+
+const WorkVideo = ({ videoSrc, title }: WorkVideoProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const togglePlay = () => {
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      videoRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.error("Video playback error:", err));
+    }
+  };
+
+  return (
+    <div className="work-video-container" onClick={togglePlay}>
+      <video
+        ref={videoRef}
+        src={videoSrc}
+        controls={isPlaying}
+        playsInline
+        preload="metadata"
+        className="work-video-element"
+        onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+        aria-label={title}
+      />
+      {!isPlaying && (
+        <div className="video-play-overlay">
+          <div className="video-play-button">
+            <MdPlayArrow />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -113,10 +156,9 @@ const Work = () => {
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
-                      <WorkImage
-                        image={project.image}
-                        alt={project.title}
-                        link={project.link}
+                      <WorkVideo
+                        videoSrc={project.video}
+                        title={project.title}
                       />
                     </div>
                   </div>
@@ -130,8 +172,9 @@ const Work = () => {
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${
+                  index === currentIndex ? "carousel-dot-active" : ""
+                }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
